@@ -1,0 +1,60 @@
+<!--&lt;!&ndash; This example is following frontend and backend separation.-->
+
+<!--    This .html performs two steps:-->
+<!--    1. Create a html template skeleton, with all the elements defined (some left empty) and named with ids.-->
+<!--    2. Load single-star.js to populate the data into empty elements.-->
+<!--    &ndash;&gt;-->
+
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    &lt;!&ndash; Required meta tags &ndash;&gt;-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="movies.html view port"-->
+<!--          content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+
+<!--    &lt;!&ndash;    &lt;!&ndash; Bootstrap CSS &ndash;&gt;&ndash;&gt;-->
+<!--    &lt;!&ndash;    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"&ndash;&gt;-->
+<!--    &lt;!&ndash;          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">&ndash;&gt;-->
+<!--    <link rel="stylesheet" href="movies.css">-->
+<!--    <title>Movie List</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<a href="movies.html">Top 20 Movies</a>-->
+<!--<h1>Movies List Page</h1>-->
+
+<!--&lt;!&ndash; H3 body is left empty here, will be populated with the data retrieved with movies.js &ndash;&gt;-->
+<!--&lt;!&ndash; movies.js will find this html element by it's id "movies_info" &ndash;&gt;-->
+<!--&lt;!&ndash;<h3 id="movies_info"></h3>&ndash;&gt;-->
+<!--<table id=movie_table class="table table-striped">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>Movie Title</th>-->
+<!--        <th>Release Year</th>-->
+<!--        <th>Director</th>-->
+<!--        <th>Genres</th>-->
+<!--        <th>Stars</th>-->
+<!--        <th>Rating</th>-->
+<!--        <th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+
+<!--    &lt;!&ndash; Table body is left empty here, will be populated with the data retrieved with single-star.js &ndash;&gt;-->
+<!--    &lt;!&ndash; single-star.js will find this html element by it's id "movie_table_body" &ndash;&gt;-->
+<!--    <tbody id=movie_table_body></tbody>-->
+<!--</table>-->
+
+<!--&lt;!&ndash; Load jQuery and Bootstrap JS &ndash;&gt;-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>-->
+<!--&lt;!&ndash;<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>&ndash;&gt;-->
+
+<!--&lt;!&ndash; Load our own JS file &ndash;&gt;-->
+<!--&lt;!&ndash; The path is relative to single-star.html, since these two files are in the same directory &ndash;&gt;-->
+<!--&lt;!&ndash; Note the url does not contain a "/" in the beginning, which means the url is relative to current path-->
+<!--     otherwise the url is relative to the root path&ndash;&gt;-->
+<!--<script src="../routes/movies.js"></script>-->
+<!--</body>-->
+
+
+<!--</html>-->

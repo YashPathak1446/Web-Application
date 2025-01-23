@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+h1, h3 {
+    text-align: center;
+    color: #444;
+}
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 20px auto 20px 10%;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table thead {
+    background-color: #008000;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+th {
+    font-size: 20px;
+}
+
+/* Table body styling */
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tbody tr:hover {
+    background-color: #d7ecff;
+}
+
+/* Table cell styling */
+table th {
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #000;
+    font-size: larger;
+}
+
+/* Link styling */
+a {
+    color: #008000;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    table thead {
+        display: none;
+    }
+
+    table tr {
+        margin-bottom: 10px;
+        border-bottom: 2px solid #ddd;
+    }
+
+    table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        text-align: left;
+        font-weight: bold;
+    }
+}
+
+
+#header {
+    position: absolute;
+    width: 100vw;
+    height: 3vh;
+    left: 0;
+    top: 0;
+    background-color: #008000;
+    border-bottom: 2px solid dimgrey;
+
+}
+#top20button {
+    border: none;
+    background-color: transparent;
+}
+
+#top20link {
+    color: white;
+}
