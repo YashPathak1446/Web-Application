@@ -3,8 +3,7 @@
 A movie storefront built as a Java servlet application, deployed to Kubernetes
 as containerized services behind an Nginx Ingress.
 
-Originally built for UC Irvine CS 122B (Winter 2025) as a two-person team with
-Kaitlin Leung. Published here with the course dataset and all credentials removed.
+Originally built for UC Irvine CS 122B (Winter 2025) as a two-person team.. Published here with the course dataset and all credentials removed.
 
 **Demo:** https://www.youtube.com/watch?v=yhKR3EB0HRk
 
