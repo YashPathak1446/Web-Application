@@ -1,60 +1,98 @@
-<!--&lt;!&ndash; This example is following frontend and backend separation.-->
+<!-- This example is following frontend and backend separation.
 
-<!--    This .html performs two steps:-->
-<!--    1. Create a html template skeleton, with all the elements defined (some left empty) and named with ids.-->
-<!--    2. Load single-star.js to populate the data into empty elements.-->
-<!--    &ndash;&gt;-->
+    This .html performs two steps:
+    1. Create a html template skeleton, with all the elements defined (some left empty) and named with ids.
+    2. Load single-star.js to populate the data into empty elements.
+    -->
 
-<!--<!doctype html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    &lt;!&ndash; Required meta tags &ndash;&gt;-->
-<!--    <meta charset="utf-8">-->
-<!--    <meta name="movies.html view port"-->
-<!--          content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="movies.html view port"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="movies.css">
+    <title>Movie List</title>
+</head>
+<body>
+<div id ="header">
+    <button id="main_button"><a href="../frontend/main.html" id="main_link">Home</a></button>
+    <button id="top20button"><a href="../frontend/movies.html" id="top20link">Top 20 Movies</a></button>
+    <form id="search_form" method = "GET" autocomplete="off">
+        <label>Search: <input type="text" id="autocomplete" name="search" autocomplete="off"></label>
+        <div id="dropdown" class="dropdown"></div>
+        <br>
+        <input type="submit" value="Search">
+    </form>
+    <button id="checkout_button"><a href="../frontend/checkout.html" id = "checkout_link">Checkout</a></button>
+    <form id="logout_button" method="POST">
+        <input type="submit" value="Logout" id="logout">
+    </form>
+</div>
+<h1>Movies List Page</h1>
 
-<!--    &lt;!&ndash;    &lt;!&ndash; Bootstrap CSS &ndash;&gt;&ndash;&gt;-->
-<!--    &lt;!&ndash;    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"&ndash;&gt;-->
-<!--    &lt;!&ndash;          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">&ndash;&gt;-->
-<!--    <link rel="stylesheet" href="movies.css">-->
-<!--    <title>Movie List</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<a href="movies.html">Top 20 Movies</a>-->
-<!--<h1>Movies List Page</h1>-->
+<div id="formDiv">
+    <form METHOD="GET" id="pageLengthForm">
+        <label for="sort">Sort by</label>
+        <select name="sort" id="sort">
+            <option value ="TARA" selected>Title ASC, Rating ASC</option>
+            <option value ="TARD">Title ASC, Rating DESC</option>
+            <option value ="TDRD">Title DESC, Rating DESC</option>
+            <option value ="TDRA">Title DESC, Rating ASC</option>
+            <option value ="RATA">Rating ASC, Title ASC</option>
+            <option value ="RATD">Rating ASC, Title DESC</option>
+            <option value ="RDTD">Rating DESC, Title DESC</option>
+            <option value ="RDTA">Rating DESC, Title ASC</option>
+        </select>
+        <label for="pageLength">page length</label>
+        <select name="pageLength" id="pageLength">
+            <option id="10" value="10" selected>10</option>
+            <option id="25" value="25">25</option>
+            <option id="50" value="50">50</option>
+            <option id="100" value="100">100</option>
+        </select>
+        <input id="pageLengthSubmit" type="submit" value="Submit">
+    </form>
+</div>
+<!-- H3 body is left empty here, will be populated with the data retrieved with movies.js -->
+<!-- movies.js will find this html element by it's id "movies_info" -->
+<!--<h3 id="movies_info"></h3>-->
+<table id=movie_table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Movie Title</th>
+        <th>Release Year</th>
+        <th>Director</th>
+        <th>Genres</th>
+        <th>Stars</th>
+        <th>Rating</th>
+        <th>Cart</th>
+    </tr>
+    </thead>
 
-<!--&lt;!&ndash; H3 body is left empty here, will be populated with the data retrieved with movies.js &ndash;&gt;-->
-<!--&lt;!&ndash; movies.js will find this html element by it's id "movies_info" &ndash;&gt;-->
-<!--&lt;!&ndash;<h3 id="movies_info"></h3>&ndash;&gt;-->
-<!--<table id=movie_table class="table table-striped">-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>Movie Title</th>-->
-<!--        <th>Release Year</th>-->
-<!--        <th>Director</th>-->
-<!--        <th>Genres</th>-->
-<!--        <th>Stars</th>-->
-<!--        <th>Rating</th>-->
-<!--        <th>-->
-<!--    </tr>-->
-<!--    </thead>-->
+    <!-- Table body is left empty here, will be populated with the data retrieved with single-star.js -->
+    <!-- single-star.js will find this html element by it's id "movie_table_body" -->
+    <tbody id=movie_table_body></tbody>
+</table>
 
-<!--    &lt;!&ndash; Table body is left empty here, will be populated with the data retrieved with single-star.js &ndash;&gt;-->
-<!--    &lt;!&ndash; single-star.js will find this html element by it's id "movie_table_body" &ndash;&gt;-->
-<!--    <tbody id=movie_table_body></tbody>-->
-<!--</table>-->
+<div id="pageButtonDiv">
+    <button id="prevPage"><</button>
+    <button id="nextPage">></button>
+</div>
 
-<!--&lt;!&ndash; Load jQuery and Bootstrap JS &ndash;&gt;-->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>-->
-<!--&lt;!&ndash;<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>&ndash;&gt;-->
+<!-- Load jQuery and Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
-<!--&lt;!&ndash; Load our own JS file &ndash;&gt;-->
-<!--&lt;!&ndash; The path is relative to single-star.html, since these two files are in the same directory &ndash;&gt;-->
-<!--&lt;!&ndash; Note the url does not contain a "/" in the beginning, which means the url is relative to current path-->
-<!--     otherwise the url is relative to the root path&ndash;&gt;-->
-<!--<script src="../routes/movies.js"></script>-->
-<!--</body>-->
+<!-- Load our own JS file -->
+<!-- The path is relative to single-star.html, since these two files are in the same directory -->
+<!-- Note the url does not contain a "/" in the beginning, which means the url is relative to current path
+     otherwise the url is relative to the root path-->
+<script src="../routes/movies.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.11/jquery.autocomplete.min.js"></script>
+<script type='text/javascript' src='../routes/main.js'></script>
+</body>
 
 
-<!--</html>-->
+</html>

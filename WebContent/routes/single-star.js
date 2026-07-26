@@ -8,7 +8,7 @@
  *      2. Use jQuery to talk to backend API to get the json data.
  *      3. Populate the data to correct html elements.
  */
-
+let logout_button = $("#logout_button");
 
 /**
  * Retrieve parameter from request URL, matching by parameter name
@@ -63,6 +63,46 @@ function handleResult(resultData) {
   }
 }
 
+function handleLogoutResult(resultData){
+  console.log("handle logout response");
+  console.log(resultData);
+
+  // If logout succeeds, it will redirect the user to login.html
+  if (resultData.status === "success") {
+    sessionStorage.clear();
+    window.location.replace("../login.html");
+  } else {
+    console.error("Logout failed:", resultData);
+  }
+}
+
+/**
+ * Submit the form content with POST method
+ * @param logoutSubmitEvent
+ */
+function submitLogoutForm(logoutSubmitEvent){
+  console.log("submit logout event");
+  /**
+   * When users click the submit button, the browser will not direct
+   * users to the url defined in HTML form. Instead, it will call this
+   * event handler when the event is triggered.
+   */
+  logoutSubmitEvent.preventDefault();
+
+  $.ajax(
+    "../api/logout", {
+      method: "POST",
+      // Serialize the login form to the data sent by POST request
+      data: logout_button.serialize(),
+      success: handleLogoutResult,
+      error: function (error) {
+        console.error("Logout failed:", error);
+      }
+    });
+}
+
+logout_button.submit(submitLogoutForm);
+
 /**
  * Once this .js is loaded, following scripts will be executed by the browser\
  */
@@ -75,5 +115,53 @@ jQuery.ajax({
     dataType: "json",  // Setting return data type
     method: "GET",// Setting request method
     url: "../api/single-star?id=" + starId, // Setting request url, which is mapped by StarsServlet in Stars.java
-    success: (resultData) => handleResult(resultData) // Setting callback function to handle data returned successfully by the SingleStarServlet
+    success: function(resultData) {
+      handleResult(resultData[0]) // Setting callback function to handle data returned successfully by the SingleStarServlet
+      if (resultData[1][0]) {
+        console.log(resultData[1][0]["listPage"]);
+        $("#backToMovies").attr('href', resultData[1][0]["listPage"]);
+      }
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const backButton = document.getElementById("backToMovies");
+    const previousUrl = sessionStorage.getItem("previousMovieListUrl");
+
+    console.log("Previous Movie List URL:", previousUrl); // Debugging
+
+    if (previousUrl) {
+        backButton.href = previousUrl;  // Set the back button URL
+    } else {
+        backButton.href = "list.html"; // Default fallback
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const movieLinks = document.querySelectorAll(".movie_link");
+
+    movieLinks.forEach(link => {
+        link.addEventListener("click", function (event) {
+            const currentUrl = window.location.href;
+            const selectedSort = document.getElementById('sort').value; // Get the current sort value
+            const pageNumber = 1; // Default to first page
+            const moviesPerPage = document.getElementById('pageLength').value; // Get the current page length
+
+            // Store in sessionStorage
+            sessionStorage.setItem("previousMovieListUrl", currentUrl);
+            sessionStorage.setItem("selectedSort", selectedSort);
+            sessionStorage.setItem("pageNumber", pageNumber);
+            sessionStorage.setItem("moviesPerPage", moviesPerPage);
+        });
+    });
+});
+
+window.addEventListener( "pageshow", function ( event ) {
+  var historyTraversal = event.persisted ||
+    ( typeof window.performance != "undefined" &&
+      window.performance.navigation.type === 2 );
+  if ( historyTraversal ) {
+    // Handle page restore.
+    window.location.reload();
+  }
 });

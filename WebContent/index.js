@@ -1,78 +1,74 @@
-/**
- * This example is following frontend and backend separation.
- *
- * Before this .js is loaded, the html skeleton is created.
- *
- * This .js performs three steps:
- *      1. Get parameter from request URL so it know which id to look for
- *      2. Use jQuery to talk to backend API to get the json data.
- *      3. Populate the data to correct html elements.
- */
-
-
+let cart = $("#cart");
 
 /**
- * Handles the data returned by the API, read the jsonObject and populate data into html elements
- * @param resultData jsonObject
+ * Handle the data returned by IndexServlet
+ * @param resultDataString jsonObject, consists of session info
  */
+function handleSessionData(resultDataString) {
+    let resultDataJson = JSON.parse(resultDataString);
 
-function handleMovieResult(resultData) {
-  console.log("handleResult: populating movies info from resultData");
+    console.log("handle session response");
+    console.log(resultDataJson);
+    console.log(resultDataJson["sessionID"]);
 
-  // // populate the star info h3
-  // // find the empty h3 body by id "star_info"
-  // let moviesInfoElement = jQuery("#movies_info");
-  //
-  // // append two html <p> created to the h3 body, which will refresh the page
-  // moviesInfoElement.append("<p>Movie Name: " + resultData[0]["movie_title"] + "</p>" +
-  //     "<p>Director Name: " + resultData[0]["movie_director"] + "</p>");
+    // show the session information
+    $("#sessionID").text("Session ID: " + resultDataJson["sessionID"]);
+    $("#lastAccessTime").text("Last access time: " + resultDataJson["lastAccessTime"]);
 
-  console.log("handleResult: populating movie table from resultData");
-
-  // Populate the star table
-  // Find the empty table body by id "movie_table_body"
-  let movieTableBodyElement = jQuery("#movie_table_body");
-
-  // Concatenate the html tags with resultData jsonObject to create table rows
-  for (let i = 0; i < Math.min(resultData.length); i++) {
-    let rowHTML = "";
-    rowHTML += "<tr>";
-    // hyperlink single-movies
-    rowHTML += "<th>" +
-      '<a href = "frontend/single-movie.html?id=' + resultData[i]['movie_id'] + '">'
-      + resultData[i]["movie_title"] + '</a>' +
-      "</th>";
-    rowHTML += "<th>" + resultData[i]["movie_year"] + "</th>";
-    rowHTML += "<th>" + resultData[i]["movie_director"] + "</th>";
-    rowHTML += "<th>" + resultData[i]["genre_name"] + "</th>";
-    // Split the json object id's and star names based on commas and store as a list
-    const starArray = resultData[i]['star_name'].split(", ");
-    const starId = resultData[i]['star_id'].split(", ");
-    rowHTML += "<th>";
-    for (let i = 0; i < starArray.length; i++) {
-      rowHTML += '<a href = "frontend/single-star.html?id=' + starId[i] + '">'
-        + starArray[i]+ '</a>' + ", ";
-    }
-    // remove the ", " separate at the end.
-    rowHTML = rowHTML.slice(0, rowHTML.length - 2);
-    rowHTML += "</th>";
-    rowHTML += "<th>" + resultData[i]["rating"] + "☆</th>";
-    rowHTML += "</tr>";
-
-
-    // Append the row created to the table body, which will refresh the page
-    movieTableBodyElement.append(rowHTML);
-  }
+    // show cart information
+    handleCartArray(resultDataJson["previousItems"]);
 }
 
 /**
- * Once this .js is loaded, following scripts will be executed by the browser\
+ * Handle the items in item list
+ * @param resultArray jsonObject, needs to be parsed to html
  */
+function handleCartArray(resultArray) {
+    console.log(resultArray);
+    let item_list = $("#item_list");
+    // change it to html list
+    let res = "<ul>";
+    for (let i = 0; i < resultArray.length; i++) {
+        // each item will be in a bullet point
+        res += "<li>" + resultArray[i] + "</li>";
+    }
+    res += "</ul>";
 
-// Makes the HTTP GET request and registers on success callback function handleResult
-jQuery.ajax({
-  dataType: "json",  // Setting return data type
-  method: "GET",// Setting request method
-  url: "api/movies", // Setting request url, which is mapped by MoviesServlet in MoviesServlet.java
-  success: (resultData) => handleMovieResult(resultData) // Setting callback function to handle data returned successfully by the SingleStarServlet
+    // clear the old array and show the new array in the frontend
+    item_list.html("");
+    item_list.append(res);
+}
+
+/**
+ * Submit form content with POST method
+ * @param cartEvent
+ */
+function handleCartInfo(cartEvent) {
+    console.log("submit cart form");
+    /**
+     * When users click the submit button, the browser will not direct
+     * users to the url defined in HTML form. Instead, it will call this
+     * event handler when the event is triggered.
+     */
+    cartEvent.preventDefault();
+
+    $.ajax("api/index", {
+        method: "POST",
+        data: cart.serialize(),
+        success: resultDataString => {
+            let resultDataJson = JSON.parse(resultDataString);
+            handleCartArray(resultDataJson["previousItems"]);
+        }
+    });
+
+    // clear input form
+    cart[0].reset();
+}
+
+$.ajax("api/index", {
+    method: "GET",
+    success: handleSessionData
 });
+
+// Bind the submit action of the form to a event handler function
+cart.submit(handleCartInfo);

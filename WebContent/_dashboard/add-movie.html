@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="add-data.css">
+</head>
+<body>
+    <div id="navbar">
+        <a href="../frontend/dashboard.html">Dashboard</a>
+        <a href="./add-movie.html">Add Movie</a>
+        <a href="./add-star.html">Add Star</a>
+        <a href="../frontend/main.html">Browse Movies</a>
+    </div>
+
+    <form>
+        <h1>Add Movie</h1>
+        <h3>New Movie Details</h3>
+        <p id="message"></p><br/>
+        <input type="text" id="title" name="title" placeholder="Title" required><br>
+        <input type="number" id="year" name="year" placeholder="Year" required><br>
+        <input type="text" id="director" name="director" placeholder="Director"><br>
+        <input type="text" id="star" name="star" placeholder="Star"><br>
+        <input type="text" id="birthYear" name="birthYear" placeholder="Birth Year"><br>
+        <input type="text" id="genre" name="genre" placeholder="Genre"><br>
+        <input type="submit" id="submit" value="Submit">
+    </form>
+
+
+    <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script type='text/javascript' src='../routes/add-movie.js'></script>
+</body>
+</html>

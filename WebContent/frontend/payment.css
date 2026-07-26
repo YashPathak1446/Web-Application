@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+#header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+    padding: 10px;
+    background-color: #008000;
+    border-bottom: 2px solid dimgrey;
+    width: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-bottom: 2px solid dimgrey;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: lightgrey 3px solid;
+    border-radius: 10%;
+    width: 30%;
+    height: 50vh;
+    margin-left: 35%;
+    margin-top: 20vh;
+}
+
+#container > h2 {
+    margin-top: 0;
+}
+
+#container * {
+    position: relative;
+    width: 80%;
+}
+
+#container > label > input {
+    position: relative;
+    width: 100%;
+}
+
+/* Link styling */
+a {
+    color: #008000;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#top20button, #main_button, #logout {
+    /* Style for the top 20 button inside the header */
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: transparent;
+    border: none;
+}
+
+#top20link, #main_link, #checkout_link, #logout {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#top20link:hover, #main_link:hover, #checkout_link:hover, #logout:hover {
+    text-decoration: underline;
+}
+
+#checkout_button {
+    background-color: transparent;
+    border: none;
+    margin-left: auto;
+}
+
+#submit {
+    display: inline-block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: white;
+    background-color: #008000;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+}

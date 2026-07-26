@@ -10,12 +10,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 // Declaring a WebServlet called SingleStarServlet, which maps to url "/api/single-star"
 @WebServlet(name = "SingleStarServlet", urlPatterns = "/api/single-star")
@@ -38,7 +41,7 @@ public class SingleStarServlet extends HttpServlet {
      * response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+        HttpSession session = request.getSession();
         response.setContentType("application/json"); // Response mime type
 
         // Retrieve parameter id from url request.
@@ -46,17 +49,21 @@ public class SingleStarServlet extends HttpServlet {
 
         // The log message can be found in localhost log
         request.getServletContext().log("getting id: " + id);
+        String previousMoviesPage = (String) session.getAttribute("previousMoviesPage");
 
         // Output stream to STDOUT
         PrintWriter out = response.getWriter();
 
         // Get a connection from dataSource and let resource manager close the connection after usage.
         try (Connection conn = dataSource.getConnection()) {
+            JsonArray jsonArray = new JsonArray();
+            ArrayList<JsonArray> data = new ArrayList<>();
             // Get a connection from dataSource
 
             // Construct a query with parameter represented by "?"
             String query = "SELECT * from stars as s, stars_in_movies as sim, movies as m " +
-                    "where m.id = sim.movieId and sim.starId = s.id and s.id = ?";
+                    "WHERE m.id = sim.movieId and sim.starId = s.id and s.id = ? \n" +
+                    "ORDER BY m.year DESC, m.title ASC";
 
             // Declare our statement
             PreparedStatement statement = conn.prepareStatement(query);
@@ -67,8 +74,6 @@ public class SingleStarServlet extends HttpServlet {
 
             // Perform the query
             ResultSet rs = statement.executeQuery();
-
-            JsonArray jsonArray = new JsonArray();
 
             // Iterate through each row of rs
             while (rs.next()) {
@@ -95,11 +100,22 @@ public class SingleStarServlet extends HttpServlet {
 
                 jsonArray.add(jsonObject);
             }
+            // Object to send filter data to js
+            JsonArray filterData = new JsonArray();
+            JsonObject filterObjData = new JsonObject();
+            filterObjData.addProperty("listPage", previousMoviesPage);
+            filterData.add(filterObjData);
+
+
+
+            data.add(jsonArray);
+            data.add(filterData);
+
             rs.close();
             statement.close();
 
             // Write JSON string to output
-            out.write(jsonArray.toString());
+            out.write(data.toString());
             // Set response status to 200 (OK)
             response.setStatus(200);
 

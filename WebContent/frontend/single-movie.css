@@ -1,3 +1,54 @@
+/* Google Fonts Link */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Resetting default styling and setting font-family */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    table thead {
+        display: none;
+    }
+
+    table tr {
+        margin-bottom: 10px;
+        border-bottom: 2px solid #ddd;
+    }
+
+    table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    #search_form input[type="text"],
+    #search_form input[type="number"] {
+        width: 100px;
+    }
+
+    #search_form {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
 .horizontalDiv {
     display: flex;
     flex-direction: row;
@@ -17,10 +68,58 @@ body {
     color: #333;
 }
 
+/* Style the header to hold the search form side by side */
+#header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+    padding: 10px;
+    background-color: #008000;
+    border-bottom: 2px solid dimgrey;
+    width: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-bottom: 2px solid dimgrey;
+}
+
+/* Adjust the search form to fit inside the header */
+#search_form {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 0 0 0 5%;
+    width: auto;
+}
+
+label {
+    color: white;
+}
+
+/* Adjust individual input fields */
+#search_form input[type="text"],
+#search_form input[type="number"] {
+    width: 150px;
+    font-size: 12px;
+    padding: 6px;
+}
+
+/* Style the search button */
+#search_form input[type="submit"] {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+
 /* Page title */
-h1 {
+h1, h2 {
     text-align: center;
     color: #444;
+    margin-top: 45px; /* Add spacing below the header */
+    margin-bottom: 20px; /* Optional spacing below the title */
 }
 
 /* Table container styling */
@@ -72,52 +171,117 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    table, thead, tbody, th, td, tr {
-        display: block;
-    }
 
-    table thead {
-        display: none;
-    }
-
-    table tr {
-        margin-bottom: 10px;
-        border-bottom: 2px solid #ddd;
-    }
-
-    table td {
-        text-align: right;
-        padding-left: 50%;
-        position: relative;
-    }
-
-    table td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 10px;
-        text-align: left;
-        font-weight: bold;
-    }
-}
-
-#header {
-    position: absolute;
-    width: 100vw;
-    height: 3vh;
-    left: 0;
-    top: 0;
-    background-color: #008000!important;
-    border-bottom: 2px solid dimgrey;
-
-}
-
-#top20button {
-    border: none;
+#top20button, #main_button, #logout {
+    /* Style for the top 20 button inside the header */
+    margin-left: 10px;
+    padding: 5px 10px;
     background-color: transparent;
+    border: none;
 }
 
-#top20link {
+#checkout_button {
+    background-color: transparent;
+    border: none;
+    margin-left: auto;
+}
+
+#top20link, #main_link, #checkout_link, #logout {
     color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#top20link:hover, #main_link:hover, #checkout_link:hover, #logout:hover {
+    text-decoration: underline;
+}
+
+#header-add-to-cart{
+    color: #008000;
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: white;
+}
+
+#backToMovies {
+    /* Style for the back to movie list link */
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+}
+
+#backToMovies:hover, #header-add-to-cart:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#backToMovies:link, #backToMovies:visited {
+    color: white;
+}
+
+#backToMovies:focus, #backToMovies:hover , #header-add-to-cart:focus, #header-add-to-cart:hover{
+    color: #ffcc00;  /* Highlight color when hovered or focused */
+}
+
+#checkout_button {
+    background-color: transparent;
+    border: none;
+    margin-left: auto;
+}
+
+
+#search_form {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 0 0 0 5%;
+    width: auto;
+}
+
+/* Adjust individual input fields */
+#search_form input[type="text"],
+#search_form input[type="number"] {
+    width: 150px;
+    font-size: 12px;
+    padding: 6px;
+}
+
+/* Style the search button */
+#search_form input[type="submit"] {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+
+
+.ui-autocomplete {
+    display: none !important;
+}
+
+#dropdown {
+    position: absolute;
+    background-color: white;
+    top: 110%;
+}
+
+#dropdown * {
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown .highlighted {
+    background-color: #007bff;
+    color: white;
+}
+
+.autocomplete-suggestions {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    position: absolute !important;
+    left: -9999px !important;
 }

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="payment.css">
+    <title>Payment</title>
+</head>
+<body>
+<div id="header">
+    <button id="main_button"><a href="../frontend/main.html" id="main_link">Home</a></button>
+    <button id="top20button"><a href="../frontend/movies.html" id="top20link">Top 20 Movies</a></button>
+    <a id="backToMovies" href="${previousMoviesPage}">← Back to Movie List </a>
+    <button id="checkout_button"><a href="../frontend/checkout.html" id = "checkout_link">Checkout</a></button>
+<!--    <form id="logout_button" method="POST">-->
+<!--        <input type="submit" value="Logout" id="logout">-->
+<!--    </form>-->
+</div>
+
+<form id="payment_form" method="post" action="#">
+    <div id="container">
+        <h2 id=total_payment>Total Payment: $<span id="cart_total">0.00</span></h2>
+        <h2>Credit Card Information</h2>
+        <label><b>First Name</b></label>
+        <label>
+            <input name="first" id ="first" placeholder="First Name" type="text" required>
+        </label>
+        <br>
+        <label><b>Last Name</b></label>
+        <label>
+            <input name="last" id="last" placeholder="Last Name" type="text" required>
+        </label>
+        <br>
+        <label><b>Credit Card Number</b></label>
+        <label>
+            <input name="number" id="number" placeholder="Credit Card Number" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" required>
+        </label>
+        <br>
+        <label><b>Expiration Date</b></label>
+        <label>
+            <input name="expiration" id="expiration" placeholder="Expiration Date" type="date" required>
+        </label>
+        <br>
+        <input type="submit" value="Place Order" id="submit">
+        <a href="#" id="paymentSubmit"></a>
+    </div>
+</form>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="../routes/payment.js"></script>
+<script src="../routes/checkout.js"></script>
+</body>
+
+
+</html>

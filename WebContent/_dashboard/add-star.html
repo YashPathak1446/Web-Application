@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Star</title>
+    <link rel="stylesheet" href="add-data.css">
+<!--    <link rel="stylesheet" href="add-star.css">-->
+</head>
+<body>
+    <div id="navbar">
+        <a href="../frontend/dashboard.html">Dashboard</a>
+        <a href="./add-movie.html">Add Movie</a>
+        <a href="./add-star.html">Add Star</a>
+        <a href="../frontend/main.html">Browse Movies</a>
+    </div>
+
+    <form id="addStarForm" method="GET">
+        <h1>Add A Star</h1>
+        <p id="message"></p><br/>
+        <input id="star" name="star" placeholder="Star Name" type="text"><br>
+        <input id="birthYear" name="birthYear" placeholder="Birth Year" type="text"><br>
+        <input type="submit" value="Submit" id="submit">
+    </form>
+    <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script type='text/javascript' src='../routes/add-star.js'></script>
+</body>
+</html>

@@ -16,7 +16,27 @@
     <title>Movie List</title>
 </head>
 <body>
-<div id="header"><button id="top20button"><a href="../index.html" id="top20link">Top 20 Movies</a></button></div>
+<div id="header">
+    <button id="main_button"><a href="../frontend/main.html" id="main_link">Home</a></button>
+    <button id="top20button"><a href="../frontend/movies.html" id="top20link">Top 20 Movies</a></button>
+    <a id="backToMovies" href="#">← Back to Movie List </a>
+    <form id="search_form" method = "GET" autocomplete="off">
+        <label>Search: <input type="text" id="autocomplete" name="search" autocomplete="off"></label>
+        <div id="dropdown" class="dropdown"></div>
+        <br>
+        <input type="submit" value="Search">
+    </form>
+    <button id="header-add-to-cart" disabled>Add to Cart</button>
+<!--    <button class="add-to-cart" data-id="${resultData[i]['movie_id']}"-->
+<!--            data-title="${resultData[i]['movie_title']}" data-price="${moviePrice}" id="cart_link">-->
+<!--        Add to Cart-->
+<!--    </button>-->
+
+    <button id="checkout_button"><a href="../frontend/checkout.html" id="checkout_link">Checkout</a></button>
+    <form id="logout_button" method="POST">
+        <input type="submit" value="Logout" id="logout">
+    </form>
+</div>
     <div>
 
         <h1 id=movie_info></h1>
@@ -47,8 +67,9 @@
         <!-- Load jQuery and Bootstrap JS -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.11/jquery.autocomplete.min.js"></script>
         <script src="../routes/single-movie.js"></script>
+        <script type='text/javascript' src='../routes/main.js'></script>
     </div>
 </body>
 

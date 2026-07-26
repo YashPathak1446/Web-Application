@@ -1,60 +1,37 @@
-<!-- This example is following frontend and backend separation.
-
-    This .html performs two steps:
-    1. Create a html template skeleton, with all the elements defined (some left empty) and named with ids.
-    2. Load single-star.js to populate the data into empty elements.
-    -->
-
-<!doctype html>
+<!-- This page will be seen if you logged in -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="movies.html view port"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!--    &lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
-    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"-->
-    <!--          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
-    <link rel="stylesheet" href="frontend/movies.css">
-    <title>Movie List</title>
+    <meta charset="UTF-8">
+    <title>Fablix</title>
+    <script src='https://www.google.com/recaptcha/api.js' type="text/javascript"></script>
 </head>
 <body>
-<div id="header"><button id="top20button"><a href="index.html" id="top20link">Top 20 Movies</a></button></div>
-<h1>Movies List Page</h1>
+Welcome to Fablix!
 
-<!-- H3 body is left empty here, will be populated with the data retrieved with movies.js -->
-<!-- movies.js will find this html element by it's id "movies_info" -->
-<!--<h3 id="movies_info"></h3>-->
-<table id=movie_table class="table table-striped">
-    <thead>
-    <tr>
-        <th>Movie Title</th>
-        <th>Release Year</th>
-        <th>Director</th>
-        <th>Genres</th>
-        <th>Stars</th>
-        <th>Rating</th>
-        <th>
-    </tr>
-    </thead>
+<!--<FORM ACTION="form-recaptcha" METHOD="POST">-->
+<!--    Name: <label>-->
+<!--    <INPUT TYPE="TEXT" NAME="name">-->
+<!--</label> (Use % to replace any strings. e.g. Eddie%)<BR>-->
+<!--    <INPUT TYPE="SUBMIT" VALUE="Submit">-->
+<!--    <div class="g-recaptcha" data-sitekey="6LfYOtAqAAAAAJfvSGN5bTcUqiEpN4-0OQCM5Xiw"></div>-->
+<!--</FORM>-->
 
-    <!-- Table body is left empty here, will be populated with the data retrieved with single-star.js -->
-    <!-- single-star.js will find this html element by it's id "movie_table_body" -->
-    <tbody id=movie_table_body></tbody>
-</table>
+<p id="sessionID"></p>
+<p id="lastAccessTime"></p>
+<form ACTION="#" id="cart" METHOD="post">
+    <label>Item Purchased</label>
+    <br>
+    <label>
+        <input name="item" required="required" type="text">
+    </label>
+    <input type="submit" VALUE="add">
+</form>
+<div id="item_list"></div>
 
-<!-- Load jQuery and Bootstrap JS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
 
-<!-- Load our own JS file -->
-<!-- The path is relative to single-star.html, since these two files are in the same directory -->
-<!-- Note the url does not contain a "/" in the beginning, which means the url is relative to current path
-     otherwise the url is relative to the root path-->
-<script src="index.js"></script>
+<!-- include your own JS file -->
+<script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+<script type='text/javascript' src='index.js'></script>
 </body>
-
-
 </html>

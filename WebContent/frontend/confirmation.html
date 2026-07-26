@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="confirmation.css">
+    <title>Confirmation</title>
+</head>
+<body>
+<div id="header">
+    <button id="main_button"><a href="../frontend/main.html" id="main_link">Home</a></button>
+    <button id="top20button"><a href="../frontend/movies.html" id="top20link">Top 20 Movies</a></button>
+    <a id="backToMovies" href="${previousMoviesPage}">← Back to Movie List </a>
+    <button id="checkout_button"><a href="../frontend/checkout.html" id="checkout_link">Checkout</a></button>
+    <form id="logout_button" method="POST">
+        <input type="submit" value="Logout" id="logout">
+    </form>
+</div>
+<h1>Confirmation</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Sale ID</th>
+        <th>Movie Title</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total Price</th>
+    </tr>
+    </thead>
+    <tbody id="confirmation_body">
+    <!-- Rows will be dynamically added here -->
+    </tbody>
+</table>
+
+<div>
+    <strong>Grand Total: $<span id="grand_total">0.00</span></strong>
+</div>
+
+<!-- Optionally, add a link to continue shopping or log out -->
+<a href="../frontend/movies.html">Continue Shopping</a>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="../routes/confirmation.js"></script>
+</body>

@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.PreparedStatement;
 
 
 // Declaring a WebServlet called StarsServlet, which maps to url "/api/stars"
@@ -48,12 +48,13 @@ public class StarsServlet extends HttpServlet {
         try (Connection conn = dataSource.getConnection()) {
 
             // Declare our statement
-            Statement statement = conn.createStatement();
-
             String query = "SELECT * from stars";
 
+            // Prepare Statement
+            PreparedStatement statement = conn.prepareStatement(query);
+
             // Perform the query
-            ResultSet rs = statement.executeQuery(query);
+            ResultSet rs = statement.executeQuery();
 
             JsonArray jsonArray = new JsonArray();
 

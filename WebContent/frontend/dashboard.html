@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="dashboard.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div id="header">
+        <a href="../frontend/dashboard.html">Dashboard</a>
+        <a href="../_dashboard/add-movie.html">Add Movie</a>
+        <a href="../_dashboard/add-star.html">Add Star</a>
+        <a href="../frontend/main.html">Browse Movies</a>
+    </div>
+    <h1>Metadata</h1>
+    <table>
+        <caption>Movies</caption>
+        <thead>
+            <tr>
+                <th>Attribute</th>
+                <th>Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>id</td>
+                <td>VARCHAR</td>
+            </tr>
+            <tr>
+                <td>title</td>
+                <td>VARCHAR</td>
+            </tr>
+            <tr>
+                <td>year</td>
+                <td>INTEGER</td>
+            </tr>
+            <tr>
+                <td>director</td>
+                <td>VARCHAR</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <caption>Stars</caption>
+        <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Type</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>id</td>
+                <td>VARCHAR</td>
+            </tr>
+            <tr>
+                <td>name</td>
+                <td>VARCHAR</td>
+            </tr>
+            <tr>
+                <td>birth year</td>
+                <td>INTEGER</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <caption>Stars in Movies</caption>
+        <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Type</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>starId</td>
+                <td>VARCHAR</td>
+            </tr>
+            <tr>
+                <td>movieId</td>
+                <td>VARCHAR</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <caption>Genres</caption>
+        <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Type</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>id</td>
+                <td>INTEGER</td>
+            </tr>
+            <tr>
+                <td>name</td>
+                <td>VARCHAR</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <caption>Genres in Movies</caption>
+        <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Type</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>genreId</td>
+                <td>INTEGER</td>
+            </tr>
+            <tr>
+                <td>movieId</td>
+                <td>VARCHAR</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <caption>Credit Cards</caption>
+        <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Type</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>id</td>
+                <td>VARCHAR</td>
+            </tr>
+            <tr>
+                <td>firstName</td>
+                <td>VARCHAR</td>
+            </tr>
+            <tr>
+                <td>lastName</td>
+                <td>VARCHAR</td>
+            </tr>
+            <tr>
+                <td>expiration</td>
+                <td>DATE</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <caption>Customers</caption>
+        <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Type</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>id</td>
+                <td>INTEGER</td>
+            </tr>
+            <tr>
+                <td>firstName</td>
+                <td>VARCHAR</td>
+            </tr>
+            <tr>
+                <td>lastName</td>
+                <td>VARCHAR</td>
+            </tr>
+            <tr>
+                <td>ccId</td>
+                <td>VARCHAR</td>
+            </tr>
+            <tr>
+                <td>address</td>
+                <td>VARCHAR</td>
+            </tr>
+            <tr>
+                <td>email</td>
+                <td>VARCHAR</td>
+            </tr>
+            <tr>
+                <td>password</td>
+                <td>VARCHAR</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <caption>Sales</caption>
+        <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Type</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>id</td>
+                <td>INTEGER</td>
+            </tr>
+            <tr>
+                <td>customerId</td>
+                <td>INTEGER</td>
+            </tr>
+            <tr>
+                <td>movieId</td>
+                <td>VARCHAR</td>
+            </tr>
+            <tr>
+                <td>saleDate</td>
+                <td>DATE</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <caption>Ratings</caption>
+        <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Type</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>movieId</td>
+            <td>VARCHAR</td>
+        </tr>
+        <tr>
+            <td>rating</td>
+            <td>FLOAT</td>
+        </tr>
+        <tr>
+            <td>numVotes</td>
+            <td>INTEGER</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <caption>Users</caption>
+        <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Type</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>username</td>
+            <td>VARCHAR</td>
+        </tr>
+        <tr>
+            <td>password</td>
+            <td>VARCHAR</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <caption>Employees</caption>
+        <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Type</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>email</td>
+            <td>VARCHAR</td>
+        </tr>
+        <tr>
+            <td>password</td>
+            <td>VARCHAR</td>
+        </tr>
+        <tr>
+            <td>fullname</td>
+            <td>VARCHAR</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script type='text/javascript' src='../routes/dashboard.js'></script>
+</body>
+</html>

@@ -16,7 +16,15 @@
     <title>Single Star</title>
 </head>
 <body>
-<div id="header"><button id="top20button"><a href="../index.html" id="top20link">Top 20 Movies</a></button></div>
+<div id="header">
+    <button id="main_button"><a href="../frontend/main.html" id="main_link">Home</a></button>
+    <button id="top20button"><a href="../frontend/movies.html" id="top20link">Top 20 Movies</a></button>
+    <a id="backToMovies" href="${previousMoviesPage}">← Back to Movie List </a>
+    <button id="checkout_button"><a href="../frontend/checkout.html" id="checkout_link">Checkout</a></button>
+    <form id="logout_button" method="POST">
+        <input type="submit" value="Logout" id="logout">
+    </form>
+</div>
     <div id=star_info></div>
     <table>
         <thead>

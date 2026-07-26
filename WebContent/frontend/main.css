@@ -1,0 +1,176 @@
+/* Google Fonts Link */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Resetting default styling and setting font-family */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Style the header to hold the search form side by side */
+#header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    background-color: #008000;
+    border-bottom: 2px solid dimgrey;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    left: 0;
+    top: 0;
+    border-bottom: 2px solid dimgrey;
+}
+
+/* Adjust the search form to fit inside the header */
+#search_form {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 0 0 0 5%;
+    width: auto;
+}
+
+label {
+    color: white;
+}
+
+/* Adjust individual input fields */
+#search_form input[type="text"],
+#search_form input[type="number"] {
+    width: 150px;
+    font-size: 12px;
+    padding: 6px;
+}
+
+/* Style the search button */
+#search_form input[type="submit"] {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #444;
+    margin-top: 45px; /* Add spacing below the header */
+    margin-bottom: 20px; /* Optional spacing below the title */
+}
+
+
+/* Style for the top 20 button inside the header */
+#top20button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: transparent;
+    border: none;
+}
+
+#top20link {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#top20link:hover {
+    text-decoration: underline;
+}
+
+#main_button, #logout {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: transparent;
+    border: none;
+}
+
+#checkout_button {
+    background-color: transparent;
+    border: none;
+    margin-left: auto;
+}
+
+#main_link, #checkout_link, #logout{
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#main_link:hover, #checkout_link:hover, #logout:hover {
+    text-decoration: underline;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    #search_form input[type="text"],
+    #search_form input[type="number"] {
+        width: 100px;
+    }
+
+    #search_form {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* Browsing sections */
+#browse_genre, #browse_title {
+    margin: 20px 0;
+    text-align: center;
+}
+
+/* Flexbox layout for genre links to avoid overlap */
+#genre_links, #title_links {
+    display: flex; /* Enable flexbox for proper alignment */
+    flex-wrap: wrap; /* Allow wrapping to the next line */
+    justify-content: center; /* Center align the links horizontally */
+    gap: 30px; /* Add consistent spacing between items */
+}
+
+/* Style for genre links */
+#genre_links a, #title_links a {
+    display: inline-block; /* Ensure the links behave as inline-blocks */
+    padding: 8px 12px;
+    text-decoration: none;
+    color: white;
+    background-color: #008000;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Hover effect for genre links */
+#genre_links a:hover, #title_links a:hover {
+    background-color: #005000;
+    text-decoration: underline;
+}
+
+.ui-autocomplete {
+    display: none !important;
+}
+
+#dropdown {
+    position: absolute;
+    background-color: white;
+    top: 110%;
+}
+
+#dropdown * {
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown .highlighted {
+    background-color: #007bff;
+    color: white;
+}
+
+.autocomplete-suggestions {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    position: absolute !important;
+    left: -9999px !important;
+}

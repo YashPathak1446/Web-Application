@@ -1,0 +1,53 @@
+<!-- This page will be seen if you logged in -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="main.html view port"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="main.css">
+    <title>Main Page</title>
+</head>
+<body>
+<div id="header">
+    <button id="main_button"><a href="../frontend/main.html" id="main_link">Home</a></button>
+    <button id="top20button"><a href="../frontend/movies.html" id="top20link">Top 20 Movies</a></button>
+
+    <form id="search_form" method = "GET" autocomplete="off">
+        <label>Search: <input type="text" id="autocomplete" name="search" autocomplete="off"></label>
+        <div id="dropdown" class="dropdown"></div>
+        <br>
+        <input type="submit" value="Search">
+    </form>
+
+    <button id="checkout_button"><a href="../frontend/checkout.html" id = "checkout_link">Checkout</a></button>
+    <form id="logout_button" method="POST">
+        <input type="submit" value="Logout" id="logout">
+    </form>
+</div>
+<h1>Welcome to Fablix!</h1>
+
+<div id = "browse_genre">
+    <h2>Browsing by movie genres</h2>
+    <div id="genre_links">
+
+    </div>
+
+    <h2>Browsing by movie title</h2>
+    <div id="title_links">
+
+    </div>
+</div>
+
+<div id="search_error_message"></div>
+
+<!-- include your own JS file -->
+<script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.11/jquery.autocomplete.min.js"></script>
+<script type='text/javascript' src='../routes/main.js'></script>
+
+</body>
+</html>
